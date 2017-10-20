@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import theGist from './the-gist.js'
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    
+    theGist();
+  }
+  
   render() {
     return (
       <div className="App">
