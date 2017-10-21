@@ -1,30 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import * as actions from './actions';
-import * as reducers from './reducers';
+import * as store from './store';
 
-console.groupCollapsed('actions');
-console.log('addToDo');
-console.log(actions.addToDo('An action to do'));
-console.log('toggleToDo');
-console.log(actions.toggleToDo(3));
-console.log('setVisibilityFilter');
-console.log(actions.setVisibilityFilter(actions.VisibilityFilters.SHOW_ACTIVE));
-console.groupEnd();
-
-console.groupCollapsed('reducers');
-console.log('initial state');
-let state = reducers.initialState;
-console.log(state);
-[actions.addToDo('Lorem ipsum'),
- actions.toggleToDo(0),
- actions.setVisibilityFilter(actions.VisibilityFilters.SHOW_ACTIVE)].forEach(action => {
-  console.log(action.type);
-  state = reducers.toDoApp(state, action);
-  console.log(state);
-});
-console.groupEnd();
+store.demonstrate();
 
 class App extends Component {
   render() {
