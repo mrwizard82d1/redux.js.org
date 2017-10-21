@@ -54,6 +54,22 @@ export function toDos(state = [], action) {
 }
 
 /**
+ * Our visibililty filter reducer.
+ * @param state The current visibility filter.
+ * @param action The action to apply to the state.
+ * @returns The new state
+ */
+export function visibility(state = VisibilityFilters.SHOW_ALL, action) {
+  switch(action.type) {
+  case SET_VISIBILITY_FILTER:
+    return action.filter;
+  
+  default:
+    return state;
+  }
+}
+
+/**
  * Our combined (application) reducer.
  * @param state The current application state.
  * @param action The action to apply to the state.
@@ -62,7 +78,9 @@ export function toDos(state = [], action) {
 export function toDoApp(state = initialState, action) {
   switch(action.type) {
   case SET_VISIBILITY_FILTER:
-    return Object.assign({}, state, { visibilityFilter: action.filter });
+    return Object.assign({}, state, {
+      visibilityFilter: visibility(state.visibilityFilter, action)
+    });
     
   case ADD_TODO:
   case TOGGLE_TODO:
