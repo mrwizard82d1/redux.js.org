@@ -24,3 +24,12 @@ export const initialState = {
   toDos: [],
 };
 
+/**
+ * Our combined (application) reducer.
+ * @param state The current application state.
+ * @param action The action to apply to the state.
+ */
+export function toDoApp(state = initialState, action) {
+  // For now, we ignore `action` and simply return the state supplied us.
+  return state;
+}

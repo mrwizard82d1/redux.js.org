@@ -15,7 +15,15 @@ console.groupEnd();
 
 console.groupCollapsed('reducers');
 console.log('initial state');
-console.log(reducers.initialState);
+let state = reducers.initialState;
+console.log(state);
+[actions.addToDo('Lorem ipsum'),
+ actions.toggleToDo(1),
+ actions.setVisibilityFilter(actions.VisibilityFilters.SHOW_ACTIVE)].forEach(action => {
+  console.log(action.type);
+  state = reducers.toDoApp(state, action);
+  console.log(state);
+});
 console.groupEnd();
 
 class App extends Component {
