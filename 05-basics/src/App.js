@@ -2,13 +2,21 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import * as actions from './actions';
+import * as reducers from './reducers';
 
+console.groupCollapsed('actions');
 console.log('addToDo');
 console.log(actions.addToDo('An action to do'));
 console.log('toggleToDo');
 console.log(actions.toggleToDo(3));
 console.log('setVisibilityFilter');
 console.log(actions.setVisibilityFilter(actions.VisibilityFilters.SHOW_ACTIVE));
+console.groupEnd();
+
+console.groupCollapsed('reducers');
+console.log('initial state');
+console.log(reducers.initialState);
+console.groupEnd();
 
 class App extends Component {
   render() {
