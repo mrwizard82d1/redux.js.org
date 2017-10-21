@@ -1,3 +1,9 @@
+import {
+  VisibilityFilters,
+  ADD_TODO,
+  TOGGLE_TODO,
+  SET_VISIBILITY_FILTER } from "./actions";
+
 /**
  *
  * One often begins the design effort by designing the state.
@@ -17,8 +23,6 @@ const initialShape = {
 };
  */
 
-import { VisibilityFilters, SET_VISIBILITY_FILTER } from "./actions";
-
 export const initialState = {
   visibilityFilter: VisibilityFilters.SHOW_ALL,
   toDos: [],
@@ -30,9 +34,23 @@ export const initialState = {
  * @param action The action to apply to the state.
  */
 export function toDoApp(state = initialState, action) {
-  // For now, only handle `SET_VISIBILITY_FILTER`
-  if (action.type === SET_VISIBILITY_FILTER) {
+  switch(action.type) {
+  case SET_VISIBILITY_FILTER:
     return Object.assign({}, state, { visibilityFilter: action.filter });
+  case ADD_TODO:
+    return Object.assign({}, state, {
+      toDos: [...state.toDos, {
+        text: action.text,
+        completed: false,
+      }],
+    });
+  case TOGGLE_TODO:
+    return Object.assign({}, state, {
+      toDos: state.toDos.map((toDo, index) => (index === action.index
+        ? Object.assign({}, toDo, { completed: true })
+        : toDo))
+    });
+  default:
+    return state;
   }
-  return state;
 }

@@ -18,7 +18,7 @@ console.log('initial state');
 let state = reducers.initialState;
 console.log(state);
 [actions.addToDo('Lorem ipsum'),
- actions.toggleToDo(1),
+ actions.toggleToDo(0),
  actions.setVisibilityFilter(actions.VisibilityFilters.SHOW_ACTIVE)].forEach(action => {
   console.log(action.type);
   state = reducers.toDoApp(state, action);
