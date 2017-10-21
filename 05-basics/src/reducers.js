@@ -17,7 +17,7 @@ const initialShape = {
 };
  */
 
-import { VisibilityFilters} from "./actions";
+import { VisibilityFilters, SET_VISIBILITY_FILTER } from "./actions";
 
 export const initialState = {
   visibilityFilter: VisibilityFilters.SHOW_ALL,
@@ -30,6 +30,9 @@ export const initialState = {
  * @param action The action to apply to the state.
  */
 export function toDoApp(state = initialState, action) {
-  // For now, we ignore `action` and simply return the state supplied us.
+  // For now, only handle `SET_VISIBILITY_FILTER`
+  if (action.type === SET_VISIBILITY_FILTER) {
+    return Object.assign({}, state, { visibilityFilter: action.filter });
+  }
   return state;
 }
