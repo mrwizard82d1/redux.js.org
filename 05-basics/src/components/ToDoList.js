@@ -5,7 +5,10 @@ import ToDo from './ToDo';
 const ToDoList = ({ toDos, onToDoClick }) => {
   return (
     <ul>
-      toDos.map((toDo, index) => (<ToDo key={index} {...toDo} onClick={() => onToDoClick(index)} />)
+      {
+        toDos.map((toDo, index) =>
+        (<ToDo key={index} {...toDo} onClick={() => onToDoClick(index)} />))
+      }
     </ul>
   );
 };
@@ -13,7 +16,6 @@ const ToDoList = ({ toDos, onToDoClick }) => {
 ToDoList.propTypes = {
   toDos: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
       text: PropTypes.string.isRequired,
       completed: PropTypes.bool.isRequired,
     }).isRequired,

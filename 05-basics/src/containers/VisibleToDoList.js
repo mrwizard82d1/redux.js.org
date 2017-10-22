@@ -12,6 +12,9 @@ function visibleToDos(toDos, filter) {
     
   case VisibilityFilters.SHOW_COMPLETED:
     return toDos.filter(toDo => toDo.completed);
+    
+  default:
+    throw new Error(`Unexpected filter: ${filter}`);
   }
 }
 

@@ -6,7 +6,9 @@ const Link = ({ active, children, onClick }) => {
     return <span>{children}</span>
   }
   
-  return ( <a href='#' onClick={(e) => { e.preventDefault(); onClick(); }}>{children}</a>)
+  return (
+    <a href='#overTheRainbow' onClick={(e) => { e.preventDefault(); onClick(); }}>{children}</a>
+  )
 };
 
 Link.propTypes = {
